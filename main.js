@@ -2,41 +2,25 @@ $(document).ready(initialize);
 
 function initialize(){
 
-var balance = 0;
-balance = parseFloat(balance);
-$('#balance').val(balance);
+  var raw;
+  var rev;
 
-$('#deposit').click(function(){
-  var deposit = prompt('Amount of Deposit')
-  deposit = parseFloat(deposit);
-  balance += deposit
-  $('#balance').val(balance);
-  $('#transaction').val('Deposit');
-  $('#amount').val(deposit);
+  $('#reverse').click(function(){
+    raw = $('#raw').val();
 
-})
+    var splitraw = [];
+    for(var i = 0; i< raw.length; i++){
+      splitraw.push(raw.charAt(i));
+    }
 
-$('#withdrawal').click(function(){
-  var withdrawal = prompt('Amount of Withdrawal')
-  withdrawal = parseFloat(withdrawal);
-  balance -= withdrawal
-  if(balance >= 0){
-    $('#balance').val(balance);
-    $('#transaction').val('Withdrawal');
-    $('#amount').val(withdrawal);
-  }else{
-    overdraft = 50
-    withdrawal += overdraft
-    balance -= overdraft
-    $('#balance').val(balance);
-    $('#transaction').val('Withdrawal/Overdraft Fee');
-    $('#amount').val(withdrawal);
+    rev = splitraw.reverse().join("");
+    $('#rev').val(rev);
+  })
 
+  $('#palindrome').click(function(){
+    var pal = raw + rev;
+    $('#pal').val(pal);
 
-  }
-
-
-
-})
+  })
 
 }
